@@ -1,22 +1,22 @@
 <!DOCTYPE html>
 <html lang="ru">
+
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Кинотеатр — Выбор мест</title>
-    <link rel="stylesheet" href="../css/style.css" />
+    <link rel="stylesheet" href="../css/style.css">
     <script src="../js/api.js"></script>
     <script src="../js/seats.js" defer></script>
 </head>
+
 <body>
     <header>
         <div class="header-row container">
             <div class="header-left">
                 <a class="nav-main" href="index.html">Фильмы</a>
             </div>
-
             <div class="site-title">Выбор мест</div>
-
             <div class="header-right">
                 <a class="profile-pill nav-link" href="bookings.html">Мои брони</a>
             </div>
@@ -29,8 +29,10 @@
         <div class="seats-wrapper">
             <div id="screen" class="screen">Экран</div>
             <div id="seats-container" class="seats-grid"></div>
+            <div class="choose-msg">Ряды 1 — 6, места 1 — 9. Нажмите на свободные места для выбора</div>
             <button id="confirm-booking" class="confirm-btn">Забронировать выбранные места</button>
         </div>
     </main>
 </body>
+
 </html>

@@ -1,4 +1,3 @@
-// seats.js
 document.addEventListener("DOMContentLoaded", async () => {
     const params = new URLSearchParams(window.location.search);
     const sessionId = params.get("sessionId");
@@ -15,14 +14,11 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     const ROWS = 6;
     const COLUMNS = 9;
-    let selectedSeats = []; // {row, number}
+    let selectedSeats = [];
 
     try {
         let seats = await getSeats(sessionId);
-
-        // Ограничиваем до ROWS x COLUMNS
         seats = seats.filter(s => s.row <= ROWS && s.number <= COLUMNS);
-
         renderSeatsGrid(seats);
     } catch (err) {
         console.error("Ошибка загрузки мест:", err);
@@ -31,7 +27,6 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     function renderSeatsGrid(seats) {
         seatsContainer.innerHTML = "";
-
         for (let row = 1; row <= ROWS; row++) {
             for (let number = 1; number <= COLUMNS; number++) {
                 const seatObj = seats.find(s => s.row === row && s.number === number);
@@ -47,25 +42,17 @@ document.addEventListener("DOMContentLoaded", async () => {
                     seatEl.addEventListener("click", () => {
                         const idx = selectedSeats.findIndex(s => s.row === row && s.number === number);
                         if (idx >= 0) {
-                            // снять выбор
                             selectedSeats.splice(idx, 1);
                             seatEl.classList.remove("selected");
                         } else {
-                            // выбрать
                             selectedSeats.push({ row, number });
                             seatEl.classList.add("selected");
                         }
                     });
                 }
-
                 seatsContainer.appendChild(seatEl);
             }
         }
-
-        const label = document.createElement("div");
-        label.className = "row-label";
-        label.textContent = `Ряды 1 — ${ROWS}, места 1 — ${COLUMNS}. Нажмите на свободные места для выбора.`;
-        seatsContainer.parentNode.insertBefore(label, seatsContainer.nextSibling);
     }
 
     confirmBtn.addEventListener("click", async () => {

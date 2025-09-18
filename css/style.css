@@ -1,5 +1,8 @@
 /* ===== Базовые ===== */
-* { box-sizing: border-box; }
+* {
+    box-sizing: border-box;
+}
+
 body {
     font-family: Arial, sans-serif;
     background-color: #f4f6f9;
@@ -27,7 +30,8 @@ header {
     justify-content: space-between;
 }
 
-.header-left, .header-right {
+.header-left,
+.header-right {
     display: flex;
     align-items: center;
     gap: 12px;
@@ -45,15 +49,16 @@ header {
 }
 
 .nav-main.active {
-    background: #e74c3c; /* accent color */
+    background: #e74c3c;
+    /* accent color */
     color: #fff;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.12);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.12);
 }
 
 .profile-pill.active {
     background: #e74c3c;
     color: #fff;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.12);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.12);
 }
 
 
@@ -80,6 +85,10 @@ header {
     text-decoration: none;
 }
 
+.profile-pill:hover {
+    background: #ffffff22;
+}
+
 /* ===== Заголовок сайта (центр) ===== */
 .site-title {
     text-align: center;
@@ -89,16 +98,18 @@ header {
     flex: 1;
 }
 
+.movies {
+    text-align: center;
+}
+
 /* ===== Список фильмов: grid, карточки выровнены по центру ===== */
 .movie-list {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
     gap: 20px;
-    justify-items: stretch; 
-    align-items: stretch;
-    margin-top: 18px;
+    justify-content: space-between;
+    padding: 20px;
 }
-
 
 .movie-card {
     width: 100%;
@@ -106,7 +117,7 @@ header {
     background: #fff;
     border-radius: 12px;
     overflow: hidden;
-    box-shadow: 0 6px 18px rgba(18,35,45,0.06);
+    box-shadow: 0 6px 18px rgba(18, 35, 45, 0.06);
     transition: transform .18s ease, box-shadow .18s ease;
     cursor: pointer;
     display: flex;
@@ -117,7 +128,7 @@ header {
 
 .movie-card:hover {
     transform: translateY(-6px);
-    box-shadow: 0 10px 28px rgba(18,35,45,0.12);
+    box-shadow: 0 10px 28px rgba(18, 35, 45, 0.12);
 }
 
 .movie-card img {
@@ -159,7 +170,7 @@ header {
     background: white;
     border-radius: 12px;
     overflow: hidden;
-    box-shadow: 0 6px 20px rgba(0,0,0,0.06);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.06);
     text-align: center;
 }
 
@@ -178,11 +189,12 @@ header {
     background: #fff;
     padding: 18px;
     border-radius: 12px;
-    box-shadow: 0 6px 20px rgba(0,0,0,0.04);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.04);
 }
 
 .sessions-title {
     font-size: 20px;
+    font-weight: bold;
     margin: 0 0 10px;
     color: #2c3e50;
 }
@@ -196,10 +208,10 @@ header {
 
 .session-card {
     min-width: 150px;
-    background: linear-gradient(180deg,#ffffff,#f7fbff);
+    background: linear-gradient(180deg, #ffffff, #f7fbff);
     border-radius: 10px;
     padding: 14px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.04);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.04);
     display: flex;
     flex-direction: column;
     gap: 6px;
@@ -230,8 +242,9 @@ header {
 
 /* ===== Схема зала (seats) ===== */
 .seats-wrapper {
-    margin-top: 14px;
+    margin-top: 20px;
     text-align: center;
+    padding-bottom: 20px;
 }
 
 .screen {
@@ -239,19 +252,20 @@ header {
     max-width: 700px;
     margin: 8px auto 18px;
     padding: 8px 12px;
-    background: linear-gradient(90deg,#e0e6ef,#f8fafc);
+    background: linear-gradient(90deg, #e0e6ef, #f8fafc);
     border-radius: 8px;
     color: #333;
     font-weight: 700;
-    box-shadow: inset 0 -6px 12px rgba(0,0,0,0.03);
+    box-shadow: inset 0 -6px 12px rgba(0, 0, 0, 0.03);
 }
 
 .seats-grid {
     margin: 0 auto;
     display: grid;
-    grid-template-columns: repeat(9, 42px); 
+    grid-template-columns: repeat(9, 42px);
     gap: 8px;
     justify-content: center;
+    padding-bottom: 20px;
 }
 
 .seat {
@@ -268,11 +282,21 @@ header {
     transition: transform .12s ease, background .12s;
 }
 
-.seat:hover { transform: translateY(-3px); }
+.seat:hover {
+    transform: translateY(-3px);
+}
 
-.seat.selected { background: #27ae60; color: #fff; }
+.seat.selected {
+    background: #27ae60;
+    color: #fff;
+}
 
-.seat.taken { background: #e74c3c; color: #fff; cursor: not-allowed; transform: none; }
+.seat.taken {
+    background: #e74c3c;
+    color: #fff;
+    cursor: not-allowed;
+    transform: none;
+}
 
 /* Подписи рядов */
 .row-label {
@@ -308,16 +332,35 @@ header {
     padding: 14px;
     border-radius: 10px;
     margin-bottom: 12px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.04);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
 }
 
-.booking-item h4 { margin: 0 0 6px; color: #2c3e50; }
-.booking-item p { margin: 4px 0; color: #6b7280; font-size: 14px; }
+.booking-item h4 {
+    margin: 0 0 6px;
+    color: #2c3e50;
+}
+
+.booking-item p {
+    margin: 4px 0;
+    color: #6b7280;
+    font-size: 14px;
+}
 
 /* ===== Адаптив ===== */
 @media (max-width: 880px) {
-    .sessions-wrapper { grid-template-columns: 1fr; }
-    .poster-card img { height: 240px; }
-    .movie-card img { height: 220px; }
-    .seats-grid { grid-template-columns: repeat(8, 40px); }
+    .sessions-wrapper {
+        grid-template-columns: 1fr;
+    }
+
+    .poster-card img {
+        height: 240px;
+    }
+
+    .movie-card img {
+        height: 220px;
+    }
+
+    .seats-grid {
+        grid-template-columns: repeat(8, 40px);
+    }
 }

@@ -1,4 +1,3 @@
-// main.js
 document.addEventListener("DOMContentLoaded", async () => {
     const moviesList = document.getElementById("movies-list");
 
@@ -10,12 +9,9 @@ document.addEventListener("DOMContentLoaded", async () => {
         }
 
         movies.forEach(movie => {
-            // карточка как ссылка на seances (кликабелен постер)
             const a = document.createElement("a");
             a.className = "movie-card";
-            // передаём poster и title в query
-            const href = `sessions.html?movieId=${encodeURIComponent(movie.id)}&title=${encodeURIComponent(movie.title)}&poster=${encodeURIComponent(movie.poster)}`;
-            a.href = href;
+            a.href = `sessions.html?movieId=${encodeURIComponent(movie.id)}&title=${encodeURIComponent(movie.title)}&poster=${encodeURIComponent(movie.poster)}`;
 
             a.innerHTML = `
                 <img src="${movie.poster}" alt="${escapeHtml(movie.title)}">
@@ -24,6 +20,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                     <div class="movie-meta">${movie.genre} • ${movie.duration} мин • ${movie.age_rating}</div>
                 </div>
             `;
+
             moviesList.appendChild(a);
         });
     } catch (err) {
@@ -32,9 +29,6 @@ document.addEventListener("DOMContentLoaded", async () => {
     }
 });
 
-// простая экранировка для вставки в HTML
 function escapeHtml(text) {
-    return String(text).replace(/[&<>"']/g, function (m) {
-        return ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'})[m];
-    });
+    return String(text).replace(/[&<>"']/g, m => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'})[m]);
 }

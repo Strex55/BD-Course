@@ -1,4 +1,3 @@
-// sessions.js
 document.addEventListener("DOMContentLoaded", async () => {
     const params = new URLSearchParams(window.location.search);
     const movieId = params.get("movieId");
@@ -13,7 +12,11 @@ document.addEventListener("DOMContentLoaded", async () => {
     titleEl.textContent = `Сеансы — ${movieTitle}`;
     posterImg.src = poster;
     posterImg.alt = movieTitle;
-    posterInfo.innerHTML = `<strong>${movieTitle}</strong>`;
+
+    const movie = (await getMovies()).find(m => m.id == movieId);
+    if (movie) {
+        posterInfo.innerHTML = `${movie.genre} • ${movie.duration} мин • ${movie.age_rating}`;
+    }
 
     try {
         const sessions = await getSessions(movieId);
@@ -35,10 +38,10 @@ document.addEventListener("DOMContentLoaded", async () => {
             hallEl.className = "session-hall";
             hallEl.textContent = s.hall;
 
-            // кнопка перейти к выбору мест (передаём poster и title)
             const chooseLink = document.createElement("a");
             chooseLink.className = "choose-btn";
-            chooseLink.href = `seats.html?sessionId=${encodeURIComponent(s.id)}&movieTitle=${encodeURIComponent(movieTitle)}&time=${encodeURIComponent(s.time)}&hall=${encodeURIComponent(s.hall)}&poster=${encodeURIComponent(poster)}`;
+            chooseLink.href = `seats.html?sessionId=${encodeURIComponent(s.id)}&movieTitle=${encodeURIComponent(movieTitle)}&time=${encodeURIComponent(s.time)}
+            &hall=${encodeURIComponent(s.hall)}&poster=${encodeURIComponent(poster)}`;
             chooseLink.textContent = "Выбрать места";
 
             card.appendChild(timeEl);
@@ -47,7 +50,6 @@ document.addEventListener("DOMContentLoaded", async () => {
 
             sessionsList.appendChild(card);
         });
-
     } catch (err) {
         console.error("Ошибка загрузки сеансов:", err);
         sessionsList.innerHTML = "<p>Ошибка загрузки сеансов.</p>";
