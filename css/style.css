@@ -1,0 +1,323 @@
+/* ===== Базовые ===== */
+* { box-sizing: border-box; }
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f6f9;
+    margin: 0;
+    color: #333;
+    -webkit-font-smoothing: antialiased;
+}
+
+.container {
+    width: 92%;
+    max-width: 1200px;
+    margin: 20px auto;
+}
+
+/* ===== Хедер: Фильмы слева (активная), Мои брони справа ===== */
+header {
+    background-color: #2c3e50;
+    color: #fff;
+    padding: 12px 20px;
+}
+
+.header-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.header-left, .header-right {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+/* Левый главный nav: Фильмы — выделена */
+.nav-main {
+    background: #ffffff11;
+    padding: 8px 14px;
+    border-radius: 8px;
+    color: #ecf0f1;
+    text-decoration: none;
+    font-weight: 700;
+    border: 1px solid transparent;
+}
+
+.nav-main.active {
+    background: #e74c3c; /* accent color */
+    color: #fff;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.12);
+}
+
+.profile-pill.active {
+    background: #e74c3c;
+    color: #fff;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.12);
+}
+
+
+.nav-link {
+    color: #ecf0f1;
+    text-decoration: none;
+    padding: 8px 12px;
+    border-radius: 8px;
+}
+
+.nav-link:hover {
+    background: #ffffff11;
+}
+
+/* Правый "профиль" */
+.profile-pill {
+    background: #ffffff11;
+    color: #ecf0f1;
+    padding: 8px 12px;
+    border-radius: 20px;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    text-decoration: none;
+}
+
+/* ===== Заголовок сайта (центр) ===== */
+.site-title {
+    text-align: center;
+    font-size: 22px;
+    font-weight: 700;
+    color: #fff;
+    flex: 1;
+}
+
+/* ===== Список фильмов: grid, карточки выровнены по центру ===== */
+.movie-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 20px;
+    justify-items: stretch; 
+    align-items: stretch;
+    margin-top: 18px;
+}
+
+
+.movie-card {
+    width: 100%;
+    max-width: 260px;
+    background: #fff;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 6px 18px rgba(18,35,45,0.06);
+    transition: transform .18s ease, box-shadow .18s ease;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+    color: inherit;
+}
+
+.movie-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 10px 28px rgba(18,35,45,0.12);
+}
+
+.movie-card img {
+    width: 100%;
+    height: 320px;
+    object-fit: cover;
+    display: block;
+}
+
+/* Контент карточки выровнен по центру */
+.movie-info {
+    padding: 12px 14px 16px;
+    text-align: center;
+    flex: 1;
+}
+
+.movie-info h3 {
+    margin: 6px 0 8px;
+    font-size: 18px;
+    color: #2c3e50;
+}
+
+.movie-meta {
+    font-size: 13px;
+    color: #6b7280;
+    margin-bottom: 10px;
+}
+
+/* ===== Сессии: новый стиль ===== */
+.sessions-wrapper {
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    gap: 26px;
+    align-items: start;
+    margin-top: 18px;
+}
+
+.poster-card {
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.06);
+    text-align: center;
+}
+
+.poster-card img {
+    width: 100%;
+    height: 380px;
+    object-fit: cover;
+    display: block;
+}
+
+.poster-info {
+    padding: 12px;
+}
+
+.sessions-panel {
+    background: #fff;
+    padding: 18px;
+    border-radius: 12px;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.04);
+}
+
+.sessions-title {
+    font-size: 20px;
+    margin: 0 0 10px;
+    color: #2c3e50;
+}
+
+.sessions-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 12px;
+}
+
+.session-card {
+    min-width: 150px;
+    background: linear-gradient(180deg,#ffffff,#f7fbff);
+    border-radius: 10px;
+    padding: 14px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.04);
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    align-items: center;
+}
+
+.session-time {
+    font-weight: 700;
+    font-size: 18px;
+    color: #0b66c3;
+}
+
+.session-hall {
+    font-size: 13px;
+    color: #6b7280;
+}
+
+.choose-btn {
+    margin-top: 8px;
+    padding: 8px 12px;
+    background: #0b66c3;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+/* ===== Схема зала (seats) ===== */
+.seats-wrapper {
+    margin-top: 14px;
+    text-align: center;
+}
+
+.screen {
+    width: 80%;
+    max-width: 700px;
+    margin: 8px auto 18px;
+    padding: 8px 12px;
+    background: linear-gradient(90deg,#e0e6ef,#f8fafc);
+    border-radius: 8px;
+    color: #333;
+    font-weight: 700;
+    box-shadow: inset 0 -6px 12px rgba(0,0,0,0.03);
+}
+
+.seats-grid {
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(9, 42px); 
+    gap: 8px;
+    justify-content: center;
+}
+
+.seat {
+    width: 42px;
+    height: 42px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #ecf0f1;
+    cursor: pointer;
+    font-size: 13px;
+    color: #2c3e50;
+    transition: transform .12s ease, background .12s;
+}
+
+.seat:hover { transform: translateY(-3px); }
+
+.seat.selected { background: #27ae60; color: #fff; }
+
+.seat.taken { background: #e74c3c; color: #fff; cursor: not-allowed; transform: none; }
+
+/* Подписи рядов */
+.row-label {
+    grid-column: 1 / -1;
+    text-align: center;
+    color: #6b7280;
+    font-size: 13px;
+    margin-top: 8px;
+}
+
+/* ===== Кнопка подтверждения ===== */
+.confirm-btn {
+    display: inline-block;
+    margin: 18px auto 0;
+    padding: 12px 22px;
+    background: #0b66c3;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+/* ===== Бронирования ===== */
+.booking-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.booking-item {
+    background: #fff;
+    padding: 14px;
+    border-radius: 10px;
+    margin-bottom: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.04);
+}
+
+.booking-item h4 { margin: 0 0 6px; color: #2c3e50; }
+.booking-item p { margin: 4px 0; color: #6b7280; font-size: 14px; }
+
+/* ===== Адаптив ===== */
+@media (max-width: 880px) {
+    .sessions-wrapper { grid-template-columns: 1fr; }
+    .poster-card img { height: 240px; }
+    .movie-card img { height: 220px; }
+    .seats-grid { grid-template-columns: repeat(8, 40px); }
+}
